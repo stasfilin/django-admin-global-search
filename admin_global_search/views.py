@@ -9,7 +9,7 @@ from django.urls import reverse
 class GlobalSearchView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         query = request.GET.get("q", "")
-        results = []
+        results = {}
         if query:
             for model in ContentType.objects.all():
                 model_class = model.model_class()
@@ -25,20 +25,26 @@ class GlobalSearchView(LoginRequiredMixin, View):
                     q_objects |= Q(**{f"{field}__icontains": query})
 
                 model_results = model_class.objects.filter(q_objects)
-                for result in model_results:
-                    admin_url = reverse(
-                        f"admin:{model.app_label}_{model.model}_change",
-                        args=(result.pk,),
-                    )
-                    results.append(
-                        {
-                            "model": model.model,
-                            "app_label": model.app_label,
-                            "object_id": result.pk,
-                            "str": str(result),
-                            "admin_url": admin_url,
-                        }
-                    )
+                if model_results:
+                    model_key = f"{model.app_label}:{model.model}"
+                    if model_key not in results:
+                        results[model_key] = []
+
+                    for result in model_results:
+                        admin_url = reverse(
+                            f"admin:{model.app_label}_{model.model}_change",
+                            args=(result.pk,),
+                        )
+                        results[model_key].append(
+                            {
+                                "model": model.model,
+                                "app_label": model.app_label,
+                                "object_id": result.pk,
+                                "str": str(result),
+                                "admin_url": admin_url,
+                            }
+                        )
+
         return render(
             request,
             "admin_global_search/results.html",

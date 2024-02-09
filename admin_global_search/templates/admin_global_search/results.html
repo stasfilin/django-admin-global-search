@@ -1,20 +1,60 @@
 {% extends "admin/base_site.html" %}
 {% load i18n %}
 
+{% block extrahead %}
+<style>
+  .tables-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  .table-container {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
+  }
+  @media (max-width: 768px) {
+    .table-container {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+</style>
+{% endblock %}
+
 {% block content %}
-  <div class="admin-global-search-results">
-    <h1>{% trans "Search Results" %}</h1>
-    {% if query %}
-      <p>{% blocktrans %}Results for "{{ query }}":{% endblocktrans %}</p>
-      <ul>
-        {% for result in results %}
-          <li>
-            <a href="{{ result.admin_url }}">{{ result.str }}</a> ({{ result.app_label|capfirst }}: {{ result.model|capfirst }})
-          </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>{% trans "Please enter a query to search." %}</p>
-    {% endif %}
-  </div>
+<div class="admin-global-search-results">
+  <h1>{% trans "Search Results" %}</h1>
+  {% if query %}
+    <p>{% blocktrans %}Results for "{{ query }}":{% endblocktrans %}</p>
+    <div class="tables-row">
+      {% for model, model_results in results.items %}
+        <div class="table-container">
+          <h2>{{ model|capfirst }}</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>{% trans "Item" %}</th>
+                <th>{% trans "Actions" %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for result in model_results %}
+              <tr>
+                <td>{{ result.str }}</td>
+                <td><a href="{{ result.admin_url }}">{% trans "View" %}</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>{% trans "Please enter a query to search." %}</p>
+  {% endif %}
+</div>
 {% endblock %}
