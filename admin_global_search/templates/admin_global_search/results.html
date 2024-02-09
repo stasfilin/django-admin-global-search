@@ -1,0 +1,20 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div class="admin-global-search-results">
+    <h1>{% trans "Search Results" %}</h1>
+    {% if query %}
+      <p>{% blocktrans %}Results for "{{ query }}":{% endblocktrans %}</p>
+      <ul>
+        {% for result in results %}
+          <li>
+            <a href="{{ result.admin_url }}">{{ result.str }}</a> ({{ result.app_label|capfirst }}: {{ result.model|capfirst }})
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>{% trans "Please enter a query to search." %}</p>
+    {% endif %}
+  </div>
+{% endblock %}

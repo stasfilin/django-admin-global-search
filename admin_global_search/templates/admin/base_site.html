@@ -1,0 +1,59 @@
+{% extends "admin/base.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    @media (min-width: 992px) {
+        .global-search-bar {
+            float: right;
+        }
+
+        .global-search-bar form {
+            margin-right: 20px;
+        }
+    }
+    
+    .global-search-bar input[type="text"] {
+        font-size: 14px;
+        line-height: 1.5;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        margin-right: 8px;
+    }
+    
+    .global-search-bar button {
+        padding: 5px 15px;
+        background-color: #79aec8;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    
+    .global-search-bar button:hover {
+        background-color: #5692b6;
+    }
+</style>
+{% endblock %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<div id="site-name">
+    <a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a>
+</div>
+{% if user.is_anonymous %}
+    {% include "admin/color_theme_toggle.html" %}
+{% endif %}
+{% if user.is_authenticated and user.is_staff %}
+    <div class="global-search-bar">
+        <form method="get" action="{% url 'admin_global_search' %}">
+            <input type="text" name="q" placeholder="{% trans 'Global Search...' %}" aria-label="{% trans 'Search' %}">
+            <button type="submit">{% trans 'Search' %}</button>
+        </form>
+    </div>
+{% endif %}
+{% endblock %}
