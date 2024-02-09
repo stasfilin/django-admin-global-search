@@ -13,13 +13,13 @@ class GlobalSearchView(LoginRequiredMixin, View):
         if query:
             for model in ContentType.objects.all():
                 model_class = model.model_class()
-                if model_class is None or not hasattr(model_class, "search_fields"):
+                if model_class is None or not hasattr(model_class, "global_search_fields"):
                     continue
                 perm = f"{model.app_label}.view_{model.model}"
                 if not request.user.has_perm(perm):
                     continue
 
-                search_fields = model_class.search_fields
+                search_fields = model_class.global_search_fields
                 q_objects = Q()
                 for field in search_fields:
                     q_objects |= Q(**{f"{field}__icontains": query})

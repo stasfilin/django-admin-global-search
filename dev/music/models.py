@@ -5,6 +5,8 @@ class Artist(models.Model):
     name = models.CharField(max_length=100)
     bio = models.TextField(blank=True)
 
+    global_search_fields = ("name", "bio")
+
     def __str__(self):
         return self.name
 
@@ -15,7 +17,7 @@ class Album(models.Model):
     release_date = models.DateField()
     genre = models.CharField(max_length=50)
 
-    search_fields = ("title", "genre")
+    global_search_fields = ("title", "genre")
 
     def __str__(self):
         return self.title
@@ -27,7 +29,7 @@ class Song(models.Model):
     duration = models.IntegerField(help_text="Duration in seconds")
     lyrics = models.TextField(blank=True)
 
-    search_fields = ("title", "lyrics")
+    global_search_fields = ("title", "lyrics")
 
     def __str__(self):
         return self.title
