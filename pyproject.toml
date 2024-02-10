@@ -21,7 +21,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Framework :: Django",
     "Operating System :: OS Independent",
-    "License :: OSI Approved :: BSD 3-Clause License",
+    "License :: OSI Approved :: The 3-Clause BSD License (BSD-3-Clause)",
 ]
 
 [tool.poetry.urls]
