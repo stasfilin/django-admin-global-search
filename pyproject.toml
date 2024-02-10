@@ -1,10 +1,14 @@
 [tool.poetry]
-name = "admin_global_search"
+name = "django-admin-global-search"
 version = "0.0.1"
 description = "A global search for Django Admin UI"
 authors = ["Stanislav Filin <stasfilin@hotmail.com>"]
 license = "BSD 3-Clause License"
 readme = "README.md"
+packages = [
+    { include = "admin_global_search" },
+    { include = "admin_global_search/**/*.py" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"

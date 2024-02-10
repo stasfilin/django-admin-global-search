@@ -5,7 +5,7 @@ This Django application introduces a GlobalSearchView, designed to perform a glo
 
 ## Features
 * Global Search: Enables searching across multiple models from a single query.
-* Dynamic Model Inclusion: Automatically includes models that define global_search_fields, allowing for flexible search configurations.
+* Dynamic Model Inclusion: Automatically includes models that define `global_search_fields`, allowing for flexible search configurations.
 * Admin Integration: Provides direct links to the admin change page for each search result, facilitating easy editing.
 
 ## Getting Started:
