@@ -17,15 +17,9 @@ jobs:
     - name: Install Poetry
       run: |
         pip install poetry
-    - name: Configure Poetry
-      run: |
-        poetry config virtualenvs.create false
     - name: Install dependencies with Poetry
       run: |
         poetry install
-    - name: Install Pylint if not in pyproject.toml
-      run: |
-        poetry add --dev pylint
     - name: Analysing the code with Pylint
       run: |
         poetry run admin_global_search/
