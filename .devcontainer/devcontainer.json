@@ -8,6 +8,6 @@
 				"streetsidesoftware.code-spell-checker"
 			]
 		}
-	}
-	// "postCreateCommand": "pip3 install -r requirements.txt"
+	},
+	"postCreateCommand": "pip3 install poetry && poetry config virtualenvs.in-project true && poetry install"
 }
