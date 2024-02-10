@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Artist, Album, Song
+
+from .models import Album, Artist, Song
 
 
 def get_list_display(model):

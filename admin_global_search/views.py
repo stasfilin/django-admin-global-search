@@ -1,9 +1,9 @@
-from django.shortcuts import render
-from django.contrib.contenttypes.models import ContentType
-from django.views import View
-from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.contenttypes.models import ContentType
+from django.db.models import Q
+from django.shortcuts import render
 from django.urls import reverse
+from django.views import View
 
 
 class GlobalSearchView(LoginRequiredMixin, View):
