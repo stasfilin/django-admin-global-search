@@ -22,4 +22,4 @@ jobs:
         poetry install
     - name: Analysing the code with Pylint
       run: |
-        poetry run admin_global_search/
+        poetry run pylint admin_global_search/
