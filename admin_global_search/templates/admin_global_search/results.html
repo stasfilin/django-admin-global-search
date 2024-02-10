@@ -25,6 +25,8 @@
 </style>
 {% endblock %}
 
+{% block title %}Results for "{{ query }}" | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
 {% block content %}
 <div class="admin-global-search-results">
   <h1>{% trans "Search Results" %}</h1>

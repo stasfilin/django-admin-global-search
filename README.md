@@ -2,6 +2,8 @@
 
 ## Introduction
 This Django application introduces a GlobalSearchView, designed to perform a global search across various models within the Django admin site.
+![alt text](assets/main.png "Main Page")
+![alt text](assets/results.png "Results Page")
 
 ## Features
 * Global Search: Enables searching across multiple models from a single query.
@@ -19,7 +21,16 @@ Install with command `pip install django-admin-global-search`.
 
 ### Usage
 To use `django-admin-global-search` in your Django project, you need to update your models and URL configurations.
-1. Add `admin_global_search` to your `INSTALLED_APPS` setting.
+1. Add `admin_global_search` to your `INSTALLED_APPS` setting before `django.contrib.admin`.
+```python
+INSTALLED_APPS = [
+    "admin_global_search",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    ...
+]
+```
 2. Ensure your models have a `global_search_fields` attribute that specifies the fields to be included in the search. Example:
 ```python
 class Artist(models.Model):
