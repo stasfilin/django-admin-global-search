@@ -14,6 +14,7 @@ python = "^3.11"
 faker = "^23.1.0"
 django = "^5.0.2"
 isort = "^5.13.2"
+pylint = "^3.0.3"
 
 [build-system]
 requires = ["poetry-core"]
