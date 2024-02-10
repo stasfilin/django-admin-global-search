@@ -5,10 +5,27 @@ description = "A global search for Django Admin UI"
 authors = ["Stanislav Filin <stasfilin@hotmail.com>"]
 license = "BSD 3-Clause License"
 readme = "README.md"
+homepage = "https://github.com/stasfilin/django-admin-global-search"
+repository = "https://github.com/stasfilin/django-admin-global-search"
+keywords = ["django", "admin", "global", "search"]
 packages = [
     { include = "admin_global_search" },
     { include = "admin_global_search/**/*.py" },
 ]
+classifiers = [
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Development Status :: 4 - Beta",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Framework :: Django",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: BSD 3-Clause License",
+]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/stasfilin/django-admin-global-search/issues"
 
 [tool.poetry.dependencies]
 python = "^3.11"
