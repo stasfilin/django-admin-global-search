@@ -1,9 +1,12 @@
 # Django Admin Global Search
+[![Downloads](https://static.pepy.tech/badge/django-admin-global-search)](https://pepy.tech/project/django-admin-global-search)
+[![Downloads](https://static.pepy.tech/badge/django-admin-global-search/month)](https://pepy.tech/project/django-admin-global-search)
+[![Downloads](https://static.pepy.tech/badge/django-admin-global-search/week)](https://pepy.tech/project/django-admin-global-search)
 
 ## Introduction
 This Django application introduces a GlobalSearchView, designed to perform a global search across various models within the Django admin site.
-![alt text](assets/main.png "Main Page")
-![alt text](assets/results.png "Results Page")
+![alt text](https://github.com/stasfilin/django-admin-global-search/blob/main/assets/main.png)
+![alt text](https://github.com/stasfilin/django-admin-global-search/blob/main/assets/results.png)
 
 ## Features
 * Global Search: Enables searching across multiple models from a single query.
