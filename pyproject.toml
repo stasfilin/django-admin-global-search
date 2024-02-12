@@ -28,7 +28,7 @@ classifiers = [
 "Bug Tracker" = "https://github.com/stasfilin/django-admin-global-search/issues"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.8"
 
 
 [tool.poetry.group.dev.dependencies]
