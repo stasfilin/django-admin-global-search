@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-admin-global-search"
-version = "0.0.2"
+version = "0.0.3"
 description = "A global search for Django Admin UI"
 authors = ["Stanislav Filin <stasfilin@hotmail.com>"]
 license = "BSD 3-Clause License"
