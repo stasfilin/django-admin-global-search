@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q
@@ -48,7 +49,9 @@ class GlobalSearchView(LoginRequiredMixin, View):
     def fetch_model_results(self, model_class, q_objects):
         """Fetches model instances that match the search query constructed with Q objects."""
 
-        return model_class.objects.filter(q_objects)
+        qs = model_class.objects.filter(q_objects)
+        limit = getattr(settings, "ADMIN_GLOBAL_SEARCH_RESULT_LIMIT", None)
+        return qs[:limit] if limit else qs
 
     def format_results(self, model, model_results):
         """Formats search results with model details and admin change URL for each instance."""
@@ -86,7 +89,7 @@ class GlobalSearchView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):  # pylint: disable=unused-argument
         """Handles GET requests, orchestrating the search across models and rendering template."""
 
-        query = self.get_query()
+        query = self.get_query().strip()
         if not query:
             return render(
                 request,

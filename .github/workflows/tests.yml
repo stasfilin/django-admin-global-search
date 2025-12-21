@@ -26,5 +26,8 @@ jobs:
       - name: Install dependencies
         run: poetry install --no-interaction --no-ansi
 
+      - name: Run pylint
+        run: poetry run pylint admin_global_search
+
       - name: Run pytest
         run: poetry run pytest
