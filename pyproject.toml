@@ -2,7 +2,7 @@
 name = "django-admin-global-search"
 version = "0.0.6"
 description = "A global search for Django Admin UI"
-authors = ["Stanislav Filin <stasfilin@hotmail.com>"]
+authors = ["Stanislav Filin <stas@filin.email>"]
 license = "BSD 3-Clause License"
 readme = "README.md"
 homepage = "https://github.com/stasfilin/django-admin-global-search"
