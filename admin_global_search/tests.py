@@ -2,36 +2,10 @@
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
-import django
-from django.conf import settings
 from django.db.models import Q
 from django.test import RequestFactory, SimpleTestCase
 
-if not settings.configured:
-    settings.configure(
-        SECRET_KEY="test-key",
-        INSTALLED_APPS=[
-            "django.contrib.auth",
-            "django.contrib.contenttypes",
-        ],
-        DATABASES={"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}},
-        MIDDLEWARE=[],
-        ROOT_URLCONF=__name__,
-        TEMPLATES=[
-            {
-                "BACKEND": "django.template.backends.django.DjangoTemplates",
-                "DIRS": [],
-                "APP_DIRS": True,
-                "OPTIONS": {},
-            }
-        ],
-        USE_TZ=True,
-    )
-django.setup()
-
-urlpatterns = []
-
-from admin_global_search.views import GlobalSearchView  # noqa: E402  pylint: disable=C0413
+from admin_global_search.views import GlobalSearchView
 
 
 class TestGlobalSearchView(SimpleTestCase):
